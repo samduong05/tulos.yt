@@ -23,7 +23,10 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import paypalLogo from "@/images/paypalLogo.png";
-import { createCheckoutSession, Metadata } from "@/actions/createCheckoutSession";
+import {
+  createCheckoutSession,
+  Metadata,
+} from "@/actions/createCheckoutSession";
 
 const CartPage = () => {
   const [isClient, setIsClient] = useState(false);
@@ -59,14 +62,14 @@ const CartPage = () => {
   const handleCheckout = async () => {
     setLoading(true);
     try {
-      const metadata:Metadata = {
+      const metadata: Metadata = {
         orderNumber: crypto.randomUUID(),
         customerName: user?.fullName ?? "Unknown",
         customerEmail: user?.emailAddresses[0]?.emailAddress ?? "Unknown",
         clerkUserId: user!.id,
       };
       const checkoutUrl = await createCheckoutSession(cartProducts, metadata);
-      if(checkoutUrl){
+      if (checkoutUrl) {
         window.location.href = checkoutUrl;
       }
     } catch (error) {
@@ -205,6 +208,7 @@ const CartPage = () => {
                         />
                       </div>
                       <Button
+                        disabled={loading}
                         onClick={handleCheckout}
                         className="w-full rounded-full font-semibold tracking-wide"
                         size="lg"

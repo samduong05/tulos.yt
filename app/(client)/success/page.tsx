@@ -17,7 +17,7 @@ const SuccessPage = () => {
     } else {
       resetCart();
     }
-  }, [orderNumber, sessionId, resetCart]);
+  }, [orderNumber, sessionId, resetCart, router]);
   return (
     <div className="py-10 bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-4">
       <motion.div
@@ -39,7 +39,8 @@ const SuccessPage = () => {
             be sent to your inbox shortly.
           </p>
           <p className="text-gray-700">
-            Order Number: <span className="text-black font-semibold">{orderNumber}</span>
+            Order Number:{" "}
+            <span className="text-black font-semibold">{orderNumber}</span>
           </p>
         </div>
         <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-8  ">
@@ -54,9 +55,11 @@ const SuccessPage = () => {
         </div>
         {/* {Order tracker} */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <Link href={'/'}
-          className="flex items-center justify-center px-4 py-3 font-semibold bg-white text-black border border-black rounded-lg hover:bg-gray-100 transition-all duration-300 shadow-md">
-            <Home className="w-5 h-5 mr-2" /> 
+          <Link
+            href={"/"}
+            className="flex items-center justify-center px-4 py-3 font-semibold bg-white text-black border border-black rounded-lg hover:bg-gray-100 transition-all duration-300 shadow-md"
+          >
+            <Home className="w-5 h-5 mr-2" />
             Home
           </Link>
           <Link
@@ -74,7 +77,6 @@ const SuccessPage = () => {
             Shop
           </Link>
         </div>
-
       </motion.div>
     </div>
   );
